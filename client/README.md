@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+# Mombasa County Revenue Collection System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A digital revenue collection and management system for Mombasa County Government. Built to replace manual paper-based collection with a fast, transparent, and auditable platform.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Record payments for Business Permits, Land Rates, Market Stalls and Parking Fees
+- Support for Cash, M-Pesa and Bank Transfer payments
+- Real-time revenue dashboard with charts
+- Payer registration and management
+- PDF receipt generation
+- Admin login with JWT authentication
+- Revenue reports by category and payment method
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+| Layer | Technology |
+|---|---|
+| Frontend | React.js |
+| Backend | Node.js + Express |
+| Database | PostgreSQL |
+| Authentication | JWT + bcryptjs |
+| Charts | Recharts |
+| Payments | M-Pesa Daraja API |
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+### Requirements
+- Node.js v18+
+- PostgreSQL 18
+- Git
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Installation
 
-### `npm run build`
+1. Clone the repository
+   git clone https://github.com/leviupendo/-mombasa-revenue-collection.git
+   cd -mombasa-revenue-collection
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Set up the database
+   psql -U postgres -c "CREATE DATABASE mombasa_revenue;"
+   psql -U postgres -d mombasa_revenue -f server/schema.sql
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Configure environment variables
+   cd server
+   cp .env.example .env
+   Edit .env with your PostgreSQL password and JWT secret
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. Install and run the backend
+   cd server
+   npm install
+   node index.js
 
-### `npm run eject`
+5. Install and run the frontend
+   cd client
+   npm install
+   npm start
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+6. Open your browser at http://localhost:3000
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Default Admin Login
+- Email: admin@mombasa.go.ke
+- Password: admin123
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Project Structure
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+mombasa-revenue-collection/
+├── client/          React frontend
+│   └── src/
+│       └── pages/
+│           ├── Login.jsx
+│           └── Dashboard.jsx
+├── server/          Node.js backend
+│   ├── routes/
+│   │   ├── auth.js
+│   │   ├── payments.js
+│   │   └── payers.js
+│   ├── db.js
+│   ├── index.js
+│   └── schema.sql
+└── README.md
 
-## Learn More
+## Revenue Categories
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Market Stall Fees — daily and monthly stall charges
+- Parking Fees — hourly and daily parking
+- Land Rates — annual land and rent charges
+- Business Permits — annual business licensing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License
+MIT License — Mombasa County Government 2026
